@@ -1,0 +1,47 @@
+{
+    "http": "kirillv.ru",
+    "https": "azurewebsites.net",
+    "sites": [
+        {
+            "name": "Theory of probability",
+            "subdomain": "theoryofprobability",
+            "status": "Завершён",
+            "participants": [
+                "Виноградов Кирилл",
+                "Овченков Алексей"
+            ],
+            "description": "Моделирование блуждающей точки в одном, двух и трёх измерениях. Цепи Маркова."
+        },
+        {
+            "name": "Regular expression to NFA",
+            "subdomain": "regularexpressiontonfa",
+            "status": "Завершён",
+            "participants": [
+                "Алфёров Роман",
+                "Виноградов Кирилл"
+            ],
+            "description": "Построение недетерминированного конечного автомата по регулярному выражению."
+        },
+        {
+            "name": "CalculatorM",
+            "subdomain": "calculatorm",
+            "status": "Открыт",
+            "participants": [
+                "Виноградов Кирилл",
+                "Галайда Анна",
+                "Соколова Мария",
+                "Фурманец Виталий"
+            ],
+            "description": "Калькулятор, позволяющий удобно производить вычисления по модую."
+        },
+        {
+            "name": "Digital Brain",
+            "subdomain": "digitalbrain",
+            "status": "Открыт",
+            "participants": [
+                "Виноградов Кирилл"
+            ],
+            "description": "Приложение, призванное помочь пользователю развить свои вычислительные способности."
+        }
+    ]
+}
