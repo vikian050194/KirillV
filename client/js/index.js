@@ -17,8 +17,8 @@ $(document).ready(function () {
         type: "GET",
         url: "/data",
         success: function (res) {
-            var tableBody = (new HtmlGenerator()).render(res);
-            $("tbody").html(tableBody);
+            var content = (new HtmlGenerator()).render(res);
+            $("#accordion").html(content);
         }
     });
 });
