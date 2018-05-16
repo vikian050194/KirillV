@@ -7,7 +7,7 @@ function render(data) {
 
     sites.forEach((element, i) => {
         result +=
-            `<div class="panel panel-primary">
+            `<div class="panel panel-info">
                 <div class="panel-heading" role="tab" id="heading${i}">
                     <h4 class="panel-title">
                         <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse${i}" aria-expanded="true" aria-controls="collapse${i}">
