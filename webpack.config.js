@@ -1,37 +1,59 @@
-var webpack = require('webpack'),
-    ExtractTextPlugin = require("extract-text-webpack-plugin");
+const path = require("path");
+const webpack = require("webpack");
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
 module.exports = {
-    entry: ['./client/js/index.js', 'bootstrap-loader/extractStyles', './client/js/index.css.js'],
+    mode: "development",
+    entry: ["./js/index.js", "bootstrap-loader/extractStyles", "./build.js"],
     module: {
         rules: [
             {
                 test: /\.css$/,
-                use: ExtractTextPlugin.extract({
-                    fallback: "style-loader",
-                    use: "css-loader"
-                })
+                use: [
+                    MiniCssExtractPlugin.loader,
+                    "css-loader"
+                ]
             },
             {
-                test: /\.(woff|woff2|ttf|eot|svg)(\?v=\d+\.\d+\.\d+)?$/,
-                loader: 'url-loader?limit=1024&name=/fonts/[name].[ext]'
-            },
-            {
-                test: /\.(jpg|jpeg|gif|png)$/,
+                test: /\.(jpg|jpeg|gif|png|ico)$/,
                 exclude: /node_modules/,
-                loader:'url-loader?limit=1024&name=/images/[name].[ext]'
+                loader: "url-loader",
+                options: {
+                    limit: 1024,
+                    name: "[name].[ext]"
+                }
+            },
+            {
+                test: /\.(html)$/,
+                loader: "file-loader",
+                options: {
+                    limit: 1024,
+                    name: "[name].[ext]"
+                }
             }
         ]
     },
     output: {
-        filename: './build/bundle.js',
-        path: __dirname + '/client'
+        filename: "bundle.js",
+        path: path.resolve(__dirname, "build"),
+        publicPath: "/"
     },
     plugins: [
         new webpack.ProvidePlugin({
-            '$': 'jquery',
-            'jQuery': 'jquery'
+            "$": "jquery",
+            "jQuery": "jquery"
         }),
-        new ExtractTextPlugin("./build/bundle.css")
-    ]
+        new MiniCssExtractPlugin({
+            filename: "bundle.css"
+        })
+    ],
+    devServer: {
+        index: path.resolve(__dirname, "index.html"),
+        contentBase: path.resolve(__dirname, "build"),
+        publicPath: "/",
+        port: 8080,
+        watchContentBase: false,
+        open: true,
+        inline: true
+    }
 };
