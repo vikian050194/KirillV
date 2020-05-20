@@ -1,10 +1,12 @@
 const path = require("path");
 const webpack = require("webpack");
+const HtmlWebpackPlugin = require("html-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const HtmlWebpackRootPlugin = require("html-webpack-root-plugin");
 
 module.exports = {
     mode: "development",
-    entry: ["./js/index.js", "bootstrap-loader/extractStyles", "./build.js"],
+    entry: ["./js/index.js", "bootstrap-loader/extractStyles"],
     module: {
         rules: [
             {
@@ -43,6 +45,11 @@ module.exports = {
             "$": "jquery",
             "jQuery": "jquery"
         }),
+        new HtmlWebpackPlugin({
+            "title": "Square",
+            "favicon": "client/favicon.png"
+        }),
+        new HtmlWebpackRootPlugin(),
         new MiniCssExtractPlugin({
             filename: "bundle.css"
         })
